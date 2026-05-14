@@ -72,9 +72,18 @@ class VentanaLogin(QWidget):
         """Valida que los campos no estén vacíos para entrar"""
         usuario = self.user_input.text()
         contra = self.pass_input.text()
+        lineas= archivo.readlines
 
         if usuario != "" and contra != "":
             self.mensaje_error.setText("")
+            datos = lineas.strip().split(',')
+        if len(datos) == 2:
+            userGuardado= datos[0]
+            passGuardado= datos[1]
+
+        if userGuardado == usuario and passGuardado == contrasena:
+            print(f"Bienvenido de nuevo, {usuario}!")
+            return True
             self.login_exitoso.emit()
         else:
             self.mensaje_error.setText("⚠️ Datos incompletos")
