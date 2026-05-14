@@ -1,44 +1,62 @@
 # estilos.py
 STYLESHEET = """
 QWidget {
-    background-color: rgb(183, 21, 64); /* Fondo principal */
+    background-color: rgb(183, 21, 64);
     color: white;
-    font-family: Arial;
-    font-size: 14px;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
-QPushButton {
-    background-color: rgb(44, 58, 71); /* Color oscuro para botones */
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-    font-weight: bold;
+
+/* Título de bienvenida */
+.TituloLogin {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffda79;
+    margin-bottom: 20px;
 }
-QPushButton:hover {
-    background-color: rgb(255, 94, 87); /* Color de hover */
-}
-QPushButton:pressed {
-    background-color: rgb(235, 59, 90); /* Color al presionar */
-}
+
 QLineEdit {
     background-color: white;
-    color: rgb(44, 58, 71);
-    padding: 8px;
-    border-radius: 4px;
+    color: #2d3436;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 14px;
 }
-QRadioButton, QCheckBox {
-    font-size: 16px;
-    padding: 5px;
+
+QLineEdit:focus {
+    border: 2px solid #ffda79;
 }
-QLabel {
-    font-size: 18px;
+
+QPushButton {
+    background-color: #2c3a47;
+    color: white;
+    border-radius: 8px;
+    padding: 12px;
     font-weight: bold;
+    font-size: 15px;
 }
-.SuccessLabel {
-    color: rgb(5, 196, 107); /* Verde para éxito */
-    font-size: 22px;
+
+QPushButton:hover {
+    background-color: #ff5e57;
 }
+
+/* Estilo para el enlace de "Crear cuenta" */
+.BotonEnlace {
+    background-color: transparent;
+    color: #ffda79;
+    text-decoration: underline;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.BotonEnlace:hover {
+    color: white;
+    background-color: transparent;
+}
+
 .ErrorLabel {
-    color: rgb(255, 94, 87); /* Rojo claro para error */
-    font-size: 22px;
+    color: #fab1a0;
+    font-size: 14px;
+    font-weight: bold;
 }
 """
