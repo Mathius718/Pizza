@@ -7,7 +7,7 @@ def registrarUsuarios(usuario, contrasena):
         return False
     with open(ARCHIVOS, 'a', encoding='utf-8') as archivo:
         archivo.write(f'{usuario},{contrasena}\n')
-    
+    return True
     print(f"Exito: Usuario '{usuario}' registrado correctamente")
 
 def iniciarSesion(usuario, contrasena):
@@ -26,5 +26,6 @@ def iniciarSesion(usuario, contrasena):
                 if userGuardado == usuario and passGuardado == contrasena:
                     print(f"Bienvenido de nuevo, {usuario}!")
                     return True
-                
-print('Error: Usuario o contraseña incorrectos.')
+                else:   
+                    print('Error: Usuario o contraseña incorrectos.')
+                    return False

@@ -1,7 +1,7 @@
 # registro.py
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
-
+from archivos import *
 class VentanaRegistro(QWidget):
     usuario_registrado = pyqtSignal()
     volver_login = pyqtSignal()
@@ -42,8 +42,8 @@ class VentanaRegistro(QWidget):
 
     def finalizar_registro(self):
         if self.nuevo_user.text() != "" and self.nueva_pass.text() != "":
-            # Aquí podrías guardar los datos en un archivo o base de datos
-            print(f"Usuario {self.nuevo_user.text()} registrado con éxito")
+            # Aquí podrías guardar los datos en un archivo o base de dato
+            registrarUsuarios(self.nuevo_user.text(), self.nueva_pass.text())
             self.usuario_registrado.emit()
         else:
             print("Error: Campos vacíos")

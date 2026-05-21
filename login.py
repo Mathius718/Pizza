@@ -1,7 +1,7 @@
 # login.py
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout
-
+from archivos import *
 class VentanaLogin(QWidget):
     login_exitoso = pyqtSignal()
     ir_a_registro_signal = pyqtSignal() 
@@ -43,7 +43,6 @@ class VentanaLogin(QWidget):
         lbl_pregunta = QLabel("¿No tienes cuenta?")
         lbl_pregunta.setStyleSheet("font-size: 13px; font-weight: normal; color: #f1f2f6;")
         
-        # Este es el botón que causaba el error; ahora está conectado correctamente
         self.btn_registro = QPushButton("Crear nuevo usuario")
         self.btn_registro.setProperty("class", "BotonEnlace")
         self.btn_registro.setCursor(Qt.PointingHandCursor)
@@ -72,18 +71,12 @@ class VentanaLogin(QWidget):
         """Valida que los campos no estén vacíos para entrar"""
         usuario = self.user_input.text()
         contra = self.pass_input.text()
-        lineas= archivo.readlines
 
         if usuario != "" and contra != "":
-            self.mensaje_error.setText("")
-            datos = lineas.strip().split(',')
-        if len(datos) == 2:
-            userGuardado= datos[0]
-            passGuardado= datos[1]
 
-        if userGuardado == usuario and passGuardado == contrasena:
-            print(f"Bienvenido de nuevo, {usuario}!")
-            return True
-            self.login_exitoso.emit()
+            if iniciarSesion(usuario, contra) == True:
+                self.login_exitoso.emit()
+            else:
+                self.mensaje_error.setText("⚠️ Datos incompletos")
         else:
-            self.mensaje_error.setText("⚠️ Datos incompletos")
+            self.mensaje_error.setText("")
